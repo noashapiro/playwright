@@ -4,7 +4,6 @@ from pages.base_page import BasePage
 class RegistrationPage(BasePage):
     URL = "/register"
 
-    # Locators
     GENDER_MALE = "#gender-male"
     FIRST_NAME = "#FirstName"
     LAST_NAME = "#LastName"
@@ -13,13 +12,12 @@ class RegistrationPage(BasePage):
     CONFIRM_PASSWORD = "#ConfirmPassword"
     REGISTER_BUTTON = "#register-button"
     CONTINUE_BUTTON = ".register-continue-button"
-    LOGGED_IN_EMAIL = ".header-links .account"
 
     def open(self):
         self.navigate(self.URL)
         return self
 
-    def fill_registration_form(self, first_name: str, last_name: str, email: str, password: str):
+    def fill_registration_form(self, first_name, last_name, email, password):
         self.page.click(self.GENDER_MALE)
         self.page.fill(self.FIRST_NAME, first_name)
         self.page.fill(self.LAST_NAME, last_name)
@@ -35,6 +33,3 @@ class RegistrationPage(BasePage):
     def click_continue(self):
         self.page.click(self.CONTINUE_BUTTON)
         return self
-
-    def get_logged_in_email(self) -> str:
-        return self.page.locator(self.LOGGED_IN_EMAIL).inner_text()

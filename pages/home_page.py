@@ -3,7 +3,7 @@ from pages.base_page import BasePage
 
 class HomePage(BasePage):
     REGISTER_LINK = ".ico-register"
-    DIGITAL_DOWNLOADS_LINK = "a[href='/digital-downloads']"
+    DIGITAL_DOWNLOADS_LINK = ".top-menu a[href='/digital-downloads']"
     LOGGED_IN_EMAIL = ".header-links .account"
 
     def open(self):
@@ -18,5 +18,5 @@ class HomePage(BasePage):
         self.page.click(self.DIGITAL_DOWNLOADS_LINK)
         return self
 
-    def get_logged_in_email(self) -> str:
+    def get_logged_in_email(self):
         return self.page.locator(self.LOGGED_IN_EMAIL).inner_text()

@@ -10,7 +10,7 @@ class FakeUser:
     password: str
 
 
-def generate_user() -> FakeUser:
+def generate_user():
     uid = uuid.uuid4().hex[:8]
     return FakeUser(
         first_name="Test",

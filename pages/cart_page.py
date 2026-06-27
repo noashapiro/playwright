@@ -9,6 +9,6 @@ class CartPage(BasePage):
         self.page.click(self.CART_LINK)
         return self
 
-    def get_product_names(self) -> list[str]:
+    def get_product_names(self):
         self.page.wait_for_selector(self.CART_PRODUCT_NAMES)
         return self.page.locator(self.CART_PRODUCT_NAMES).all_inner_texts()
