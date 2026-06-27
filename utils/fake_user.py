@@ -1,5 +1,8 @@
-import uuid
 from dataclasses import dataclass
+
+from faker import Faker
+
+fake = Faker()
 
 
 @dataclass
@@ -11,10 +14,9 @@ class FakeUser:
 
 
 def generate_user():
-    uid = uuid.uuid4().hex[:8]
     return FakeUser(
-        first_name="Test",
-        last_name="User",
-        email=f"testuser_{uid}@example.com",
-        password="Test@1234",
+        first_name=fake.first_name(),
+        last_name=fake.last_name(),
+        email=fake.unique.email(),
+        password=fake.password(length=10),
     )
